@@ -19,20 +19,6 @@ import (
 func CreateUser(c *gin.Context) {
 	var user users.User
 
-	// bytes, err := ioutil.ReadAll(c.Request.Body)
-	// fmt.Println(string(bytes))
-	// if err != nil {
-	// 	fmt.Println(err)
-	// 	return
-	// }
-	// //	fmt.Println(string(bytes))
-	// fmt.Println(user)
-	// if err := json.Unmarshal(bytes, &user); err != nil {
-	// 	fmt.Println(err.Error())
-	// 	return
-	// }
-	// fmt.Println(user)
-
 	if err := c.ShouldBindJSON(&user); err != nil {
 		restErr := errors.NewBadRequestError("invalid json body")
 		c.JSON(restErr.Status, restErr)
@@ -44,7 +30,6 @@ func CreateUser(c *gin.Context) {
 		c.JSON(saveError.Status, saveError)
 		return
 	}
-
 	c.JSON(http.StatusCreated, result)
 }
 
