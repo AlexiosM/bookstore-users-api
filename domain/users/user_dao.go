@@ -36,7 +36,7 @@ func (user *User) Get(userId int64) *errors.RestErr {
 func (user *User) Save() *errors.RestErr {
 	stmt, err := users_db.Client.Prepare(queryInstertUser)
 	if err != nil {
-		errors.NewInternalServerError(err.Error())
+		return errors.NewInternalServerError(err.Error())
 	}
 	defer stmt.Close()
 
@@ -60,7 +60,7 @@ func (user *User) Save() *errors.RestErr {
 func (user *User) Update() *errors.RestErr {
 	stmt, err := users_db.Client.Prepare(queryUpdateUser)
 	if err != nil {
-		errors.NewInternalServerError(err.Error())
+		return errors.NewInternalServerError(err.Error())
 	}
 	defer stmt.Close()
 
