@@ -64,7 +64,9 @@ func UpdateUser(c *gin.Context) { // Gets the user to be updated by the PUT requ
 	}
 	user.Id = userId
 
-	result, err := services.UpdateUser(user) // Gets the current user from DB
+	isPartial := c.Request.Method == http.MethodPatch
+
+	result, err := services.UpdateUser(isPartial, user) // Gets the current user from DB
 	if err != nil {
 		c.JSON(err.Status, err)
 		return

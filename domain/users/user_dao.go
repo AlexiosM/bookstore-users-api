@@ -15,7 +15,7 @@ const (
 	indexUniqueEmail = "email_UNIQUE"
 	queryInstertUser = "INSERT INTO users (first_name, last_name, email, date_created) VALUES(?,?,?,?);"
 	queryGetUser     = "SELECT id, first_name, last_name, email, date_created FROM users WHERE id=?;"
-	queryUpdateUser  = "UPDATE users GET first_name=?, last_name=?, email=? WHERE id=?; "
+	queryUpdateUser  = "UPDATE users SET first_name=?, last_name=?, email=? WHERE id=?; "
 )
 
 func (user *User) Get(userId int64) *errors.RestErr {
